@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    private var colorsArray: [Color] = [.mint, .pink, .purple, .teal, .gray]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List (colorsArray, id: \.self) {
+                individualColor in
+                NavigationLink(destination: individualColor) {
+                    Text(individualColor.description)
+                }
+
+            }
+//            .listStyle(.plain) 
+            .navigationTitle("Cool Colors")
+            
+            
         }
-        .padding()
+
     }
 }
 
